@@ -12,7 +12,7 @@ const { verifyAccessToken } = require("../shared/jwt");
 
 
 route.route("/").get(verifyAccessToken, getAllRoles)
-route.route("/").post(verifyAccessToken, createRoleDetails)
+route.route("/").post(createRoleDetails)
 route.route("/").put(verifyAccessToken, updateRoleDetails)
 
 
