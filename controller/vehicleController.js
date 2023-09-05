@@ -109,7 +109,7 @@ const getFilteredAndPaginatedRecords = async (req, res) => {
      
 
      // Range filtering for year, 
-        if (filters.year  && Array.isArray(filters.year) && Number(filters.year.length ) && filters.year.length === 2) {
+        if (filters.year  && Array.isArray(filters.year) && Number(filters.year.length ) && filters?.year.length === 2) {
             const minYear = filters.year[0];
             const maxYear = filters.year[1];
             filterQuery["details.year"] = {

@@ -10,6 +10,7 @@ const {
     registerStaff,
     confirmForgetPasswordOtp ,
     refreshAccessToken,
+    registerCustomer
 } = require('../controller/authController')
 
 
@@ -21,6 +22,7 @@ route.route("/resetPassword").post(resetPassword)
 route.route("/verifyaccount").post(verifyAccount)
 route.route("/registerStaff").post(registerStaff)
 route.route("/confirmForgetOTP").post(confirmForgetPasswordOtp )
+route.route("/registerCustomer").post(registerCustomer)
 
 
 module.exports = route

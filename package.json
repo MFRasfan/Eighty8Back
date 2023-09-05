@@ -4,8 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+<<<<<<< Updated upstream
     "start": "node index.js",
     "dev": "nodemon index.js"
+=======
+    "start": "node server/index.js",
+    "dev": "nodemon server/index.js"
+>>>>>>> Stashed changes
   },
   "repository": {
     "type": "git",
@@ -22,6 +27,7 @@
     "@sendgrid/mail": "^7.7.0",
     "@types/mongoose": "^5.11.97",
     "@types/node": "^18.14.0",
+    "aws-sdk": "^2.1446.0",
     "bcrypt": "^5.1.0",
     "colors.ts": "^1.0.20",
     "cors": "^2.8.5",
