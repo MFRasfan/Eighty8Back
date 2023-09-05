@@ -6,7 +6,7 @@ const {
     updateRoleDetails,
     createRoleDetails,
     
-} = require('../controller/RoleController');
+} = require('../controller/roleController');
 const { verifyAccessToken } = require("../shared/jwt");
 
 
