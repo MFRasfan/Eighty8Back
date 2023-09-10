@@ -1,12 +1,8 @@
 {
   "files": {
-<<<<<<< Updated upstream
     "main.css": "/static/css/main.b12681fe.css",
     "main.js": "/static/js/main.ff47232f.js",
-=======
-    "main.css": "/static/css/main.9b97ec43.css",
-    "main.js": "/static/js/main.922f3b79.js",
->>>>>>> Stashed changes
+
     "reactPlayerYouTube.js": "/static/js/reactPlayerYouTube.c7dc3a37.chunk.js",
     "reactPlayerSoundCloud.js": "/static/js/reactPlayerSoundCloud.755db78f.chunk.js",
     "reactPlayerVimeo.js": "/static/js/reactPlayerVimeo.5f951d68.chunk.js",
@@ -41,13 +37,10 @@
     "static/media/google.svg": "/static/media/google.dfa8b2fb2d3f6dbe8ca7dbfeb23eb5bc.svg",
     "index.html": "/index.html",
     "static/media/two.svg": "/static/media/two.78098a9a2184e4d2299a16c38b511ae1.svg",
-<<<<<<< Updated upstream
+
     "main.b12681fe.css.map": "/static/css/main.b12681fe.css.map",
     "main.ff47232f.js.map": "/static/js/main.ff47232f.js.map",
-=======
-    "main.9b97ec43.css.map": "/static/css/main.9b97ec43.css.map",
-    "main.922f3b79.js.map": "/static/js/main.922f3b79.js.map",
->>>>>>> Stashed changes
+
     "reactPlayerYouTube.c7dc3a37.chunk.js.map": "/static/js/reactPlayerYouTube.c7dc3a37.chunk.js.map",
     "reactPlayerSoundCloud.755db78f.chunk.js.map": "/static/js/reactPlayerSoundCloud.755db78f.chunk.js.map",
     "reactPlayerVimeo.5f951d68.chunk.js.map": "/static/js/reactPlayerVimeo.5f951d68.chunk.js.map",
@@ -63,12 +56,7 @@
     "reactPlayerPreview.a838358a.chunk.js.map": "/static/js/reactPlayerPreview.a838358a.chunk.js.map"
   },
   "entrypoints": [
-<<<<<<< Updated upstream
     "static/css/main.b12681fe.css",
     "static/js/main.ff47232f.js"
-=======
-    "static/css/main.9b97ec43.css",
-    "static/js/main.922f3b79.js"
->>>>>>> Stashed changes
   ]
 }
