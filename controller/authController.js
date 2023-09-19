@@ -12,6 +12,7 @@ const {
 const User = require("../model/user");
 const Customer = require("../model/customer");
 const generateOTP = require("../shared/generateOTP");
+// const {sendEmail} = require("../shared/nodemailer")
 const { sendEmail } = require("../shared/sendgrid");
 const role = require("../model/role");
 const {

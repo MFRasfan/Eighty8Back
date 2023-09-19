@@ -4,7 +4,8 @@ const assignedHistory = require("../model/assignedHistory");
 const inquires = require("../model/inquires");
 const User = require("../model/user");
 const { addInquirySchema, guestInquirySchema } = require("../shared/validationSchema/inquirySchema");
-const {sendEmail} = require("../shared/sendgrid");
+const {sendEmail} = require("../shared/nodemailer");
+// const {sendEmail} = require("../shared/sendgrid");
 const { sendNotification } = require("../shared/notification");
 
 
