@@ -149,8 +149,6 @@ const vehicleSchema= new mongoose.Schema({
       highwayMileageMax:{
          type:Number
       },
-
-
     }
    },
    images:{
@@ -164,8 +162,10 @@ const vehicleSchema= new mongoose.Schema({
    customDetails:{
       type:Object,
       default:{}
-      
-   }
+   },
+   // purchase_history : [{
+
+   // }]
 })
 
 module.exports= mongoose.model("vehicle",vehicleSchema)

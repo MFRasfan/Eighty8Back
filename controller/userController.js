@@ -1,4 +1,5 @@
 const User = require("../model/user")
+const Customer = require("../model/customer")
 const Role = require("../model/role")
 const{ updateUserDetailsSchema} = require("../shared/validationSchema/userSchema")
 const bcrypt=require("bcrypt")
@@ -119,6 +120,79 @@ const getAllUsers= async(req,res)=>{
         res.status(500).json({ error: 'Server error' });
       }
 }
+const getAllCustomer= async(req,res)=>{
+
+  try {
+      const { role, status,sortBy, sortOrder } = req.query;
+      let sort = { createdAt: -1 }; // default sort by createdAt
+     
+      const filter = {};
+      if (sortBy && sortOrder) {
+        // if sortBy and sortOrder are provided in query, use those for sorting
+        sort = { [sortBy]: sortOrder === "desc" ? -1 : 1 };
+      }
+      if (status) filter.status = status;
+      
+      if(role==="Walk-In" || role ==="Guest" || role === "Online"){
+          const page = parseInt(req.query.page) || 1;
+          const limit = parseInt(req.query.limit) || 25;
+          let skip = (page - 1) * limit;
+          let sort = { createdAt: -1 }; // default sort by createdAt
+          const count = await Customer.countDocuments(filter);
+          if (count <= limit) {
+              skip = 0;
+            }
+        const data = await Customer.find({ "role.role": { $ne: "customer" } })
+                          .sort(sort)
+                          .skip(skip)
+                          .limit(limit)
+                          .select('-password -emailToken')
+                          .populate('role');
+              res.json({
+                  data,
+                  page: parseInt(page) || 1,
+                  pages: Math.ceil(count / limit),
+                  limit: parseInt(limit) || 25,
+                  total: count,
+                  });
+          
+      } else {
+        const roleObj = await Role.findOne({ role: role });
+        if (roleObj) {
+          filter.role = roleObj._id;
+        } else {
+          // Return empty array if role is not found
+          return res.status(200).json([]);
+        }
+    
+       console.log(filter)
+       const page = parseInt(req.query.page) || 1;
+       const limit = parseInt(req.query.limit) || 25;
+       let skip = (page - 1) * limit;
+       const count = await Customer.countDocuments(filter);
+       if (count <= limit) {
+           skip = 0;
+         }
+        const data = await Customer.find(filter)
+          .sort(sort)
+          .skip(skip)
+          .limit(limit)
+          .select('-password -emailToken')
+          .populate('role');
+    
+        res.json({
+          data,
+          page: parseInt(page) || 1,
+          pages: Math.ceil(count / limit),
+          limit: parseInt(limit) || 25,
+          total: count,
+        });
+      }
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Server error' });
+    }
+}
 
 const userGain = async(req,res)=>{
 
@@ -188,5 +262,6 @@ module.exports={
     getUserDetails,
     updateUserDetails,
     getAllUsers,
-    userGain
+    userGain ,
+    getAllCustomer
 }
