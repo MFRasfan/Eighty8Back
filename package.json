@@ -4,13 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-<<<<<<< Updated upstream
     "start": "pm2 start index.js",
     "dev": "node index.js"
-=======
-    "start": "node server/index.js",
-    "dev": "nodemon server/index.js"
->>>>>>> Stashed changes
   },
   "repository": {
     "type": "git",

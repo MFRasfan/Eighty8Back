@@ -10,13 +10,9 @@ const {
 } = require("../shared/validationSchema/authSchema");
 const User = require("../model/user");
 const generateOTP = require("../shared/generateOTP");
-<<<<<<< Updated upstream
-const {sendEmail} = require("../shared/sendgrid")
-=======
 // const { sendEmail } = require("../shared/sendgrid");
 
 const {sendEmail} = require("../shared/nodemailer")
->>>>>>> Stashed changes
 const role = require("../model/role");
 const { generateAccessToken,verifyAccessToken, generateRefreshToken } = require("../shared/jwt");
 dotenv.config();
