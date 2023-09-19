@@ -13,6 +13,8 @@ const generateOTP = require("../shared/generateOTP");
 // const { sendEmail } = require("../shared/sendgrid");
 
 const {sendEmail} = require("../shared/nodemailer")
+// const {sendEmail} = require("../shared/sendgrid")
+
 const role = require("../model/role");
 const { generateAccessToken,verifyAccessToken, generateRefreshToken } = require("../shared/jwt");
 dotenv.config();
