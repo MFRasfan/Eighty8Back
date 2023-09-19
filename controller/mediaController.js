@@ -3,7 +3,8 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 require('dotenv').config();
-
+const {S3} = require('@aws-sdk/client-s3');
+const s3 = new S3({region: 'us-west-2'});
 
 AWS.config.update({
   accessKeyId: process.env.S3_ACCESS_ID,
@@ -11,7 +12,7 @@ AWS.config.update({
   region: 'us-east-1'
 });
 
-const s3 = new AWS.S3();
+// const s3 = new AWS.S3();
 
 const storage = multer.memoryStorage(); 
 const upload = multer({ storage: storage });
