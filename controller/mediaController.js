@@ -1,17 +1,17 @@
-const AWS = require('aws-sdk');
+const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3");
 const multer = require('multer');
 const path = require('path');
-const fs = require('fs');
 require('dotenv').config();
 
 
-AWS.config.update({
-  accessKeyId: process.env.S3_ACCESS_ID,
-  secretAccessKey: process.env.S3_SECRET,
-  region: 'us-east-1'
-});
 
-const s3 = new AWS.S3();
+const s3Client=  new S3Client({
+  region:"us-east-1",
+  credentials:{
+    accessKeyId: process.env.S3_ACCESS_ID,
+    secretAccessKey: process.env.S3_SECRET,
+  }
+})
 
 const storage = multer.memoryStorage(); 
 const upload = multer({ storage: storage });
@@ -25,19 +25,21 @@ const uploadImage = async (req, res, next) => {
   }
 
   try {
-    // Upload the file to S3 bucket
-    const params = {
-      Bucket: 'eighty8alpha',
-      Key: `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`,
+    let imageKey= `uploads/${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`
+    const params = new PutObjectCommand({
+      Bucket: 'eighty8alpha-dev',
+      Key: imageKey,
       Body: file.buffer,
-    };
+      ContentType:file.mimetype
+    });
 
-    const uploadedObject = await s3.upload(params).promise();
-
+    await s3Client.send(params);
+    
     res.json({
       message: 'Image uploaded successfully',
-      url: uploadedObject.Location 
+      url: imageKey
     });
+
   } catch (err) {
     next(err);
   }

@@ -1,11 +1,12 @@
 {
-  "name": "mern_typesript_kickstarter23",
+  "name": "eighty8alpha",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "pm2 start index.js",
-    "dev": "node index.js"
+    "dev": "node index.js",
+    "nodemon": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -19,10 +20,11 @@
   },
   "homepage": "https://github.com/syeda-sumreen-ali/mern_typesript_kickstarter23#readme",
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.414.0",
+    "@aws-sdk/s3-request-presigner": "^3.414.0",
     "@sendgrid/mail": "^7.7.0",
     "@types/mongoose": "^5.11.97",
     "@types/node": "^18.14.0",
-    "aws-sdk": "^2.1446.0",
     "bcrypt": "^5.1.0",
     "colors.ts": "^1.0.20",
     "cors": "^2.8.5",

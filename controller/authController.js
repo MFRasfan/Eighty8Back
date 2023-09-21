@@ -57,7 +57,7 @@ const signup = async (req, res) => {
       subject: "Verify your email address",
       code: code,
     };
-    await sendEmail(msg);
+    // await sendEmail(msg);
 
     //find if role exist in database with permissions and status
     const RoleExist = await role.findOne({ role: value.role });
