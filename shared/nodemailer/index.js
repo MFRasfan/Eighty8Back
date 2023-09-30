@@ -4,36 +4,23 @@ const sendEmail  =  async ({ subject, email, text, html, code }) => {
   try {
     console.log("inside send email")
     const mailOptions = {
-      from: process.env.SMTP_USER,
+      from: process.env.SMPT_USER,
       to: email,
       subject: subject,
       text: text || `Your OTP code is ${code}. This code will expire in 1 hour.`,
       html: html || `<p>Your OTP code is <strong>${code}</strong>. This code will expire in 1 hour.</p>`,
     };
 
-    // const transporter = nodemailer.createTransport({
-    //   host: "smtp.office365.com",
-    //   port: 587,
-    //   secure: false,
-    //   auth: {
-    //     user: 'techsyhub@gmail.com',  
-    //     pass: 'fccywlxjyucghsei', 
-    //   },
-    // });
+   
 
     const transporter = nodemailer.createTransport({    
-      host: "smtpout.secureserver.net",  
-      secure: true,
-      // secureConnection: false, // TLS requires secureConnection to be false
-      // tls: {
-      //     ciphers:'SSLv3'
-      // },
-      // requireTLS:true,
-      port: 465,
+      host: "smtp.office365.com",  
+      secure: false,
+      port: 587,
       debug: true,
       auth: {
-          user: "info@eighty8alpha.com",
-          pass: "tjyjcvgrcdcrktmg" 
+          user: process.env.SMPT_USER,
+          pass: process.env.SMPT_PASS 
       }
   })
 

@@ -44,8 +44,7 @@ const signup = async (req, res) => {
     // Generate random OTP
     const expiresAt = new Date(Date.now() + 60 * 60 * 1000); // 1 hour expiry time
     const code = generateOTP();
-    // user.emailToken.code = code;
-    // user.emailToken.expiresAt = expiresAt;
+   
     let otp = {
       code: code,
       expiresAt: expiresAt,
@@ -219,6 +218,10 @@ const login = async (req, res) => {
       return res.status(401).json({ error: "Invalid email or password" });
     }
 
+    if(!!user && !user.isEmailVerified){
+      return res.status(400).json({ error: "Please verify your acount" });
+
+    }
     const validPassword = await bcrypt.compare(value.password, user.password);
     if (!validPassword) {
       return res.status(401).json({ error: "Invalid email or password" });
@@ -231,7 +234,7 @@ const login = async (req, res) => {
     await user.save();
 
     let obj = Object.assign({}, user._doc);
-    console.log(user);
+   
     delete obj.password;
     delete obj.emailToken;
     res.json({
