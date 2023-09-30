@@ -1,4 +1,4 @@
-const dotenv = require("dotenv");
+require("dotenv").config();
 const bcrypt = require("bcrypt");
 const {
   signupSchema,
@@ -12,19 +12,20 @@ const {
 const User = require("../model/user");
 const Customer = require("../model/customer");
 const generateOTP = require("../shared/generateOTP");
-// const {sendEmail} = require("../shared/nodemailer")
-const { sendEmail } = require("../shared/sendgrid");
+const {sendEmail} = require("../shared/nodemailer")
+// const { sendEmail } = require("../shared/sendgrid");
 const role = require("../model/role");
 const {
   generateAccessToken,
   verifyAccessToken,
   generateRefreshToken,
 } = require("../shared/jwt");
-dotenv.config();
+// dotenv.config();
 
 // Controller function for user signup
 const signup = async (req, res) => {
   try {
+    console.log("inside signup")
     // Validate email, password, and role using Joi
     const { error, value } = signupSchema.validate(req.body);
     if (error) {
@@ -49,7 +50,7 @@ const signup = async (req, res) => {
       code: code,
       expiresAt: expiresAt,
     };
-    console.log(user);
+  
 
     // Send email to user with OTP using SendGrid
     const msg = {
@@ -57,11 +58,11 @@ const signup = async (req, res) => {
       subject: "Verify your email address",
       code: code,
     };
-    // await sendEmail(msg);
+    await sendEmail(msg);
 
     //find if role exist in database with permissions and status
     const RoleExist = await role.findOne({ role: value.role });
-    console.log(RoleExist, value.role);
+   
     // Create new user in MongoDB using Mongoose
     const newUser = new User({
       email: value.email,
@@ -134,7 +135,7 @@ const registerStaff = async (req, res) => {
     newUser.password = hashedPassword;
     newUser.isEmailVerified = true;
 
-    console.log(newUser, hashedPassword);
+  
 
     const savedUser = await newUser.save();
     // Send success response
