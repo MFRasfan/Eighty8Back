@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.45cf6e8e.css",
-    "main.js": "/static/js/main.a0437db5.js",
+    "main.css": "/static/css/main.f2054865.css",
+    "main.js": "/static/js/main.dec6d36f.js",
     "reactPlayerYouTube.js": "/static/js/reactPlayerYouTube.c7dc3a37.chunk.js",
     "reactPlayerSoundCloud.js": "/static/js/reactPlayerSoundCloud.755db78f.chunk.js",
     "reactPlayerVimeo.js": "/static/js/reactPlayerVimeo.5f951d68.chunk.js",
@@ -37,8 +37,8 @@
     "static/media/google.svg": "/static/media/google.dfa8b2fb2d3f6dbe8ca7dbfeb23eb5bc.svg",
     "index.html": "/index.html",
     "static/media/two.svg": "/static/media/two.78098a9a2184e4d2299a16c38b511ae1.svg",
-    "main.45cf6e8e.css.map": "/static/css/main.45cf6e8e.css.map",
-    "main.a0437db5.js.map": "/static/js/main.a0437db5.js.map",
+    "main.f2054865.css.map": "/static/css/main.f2054865.css.map",
+    "main.dec6d36f.js.map": "/static/js/main.dec6d36f.js.map",
     "reactPlayerYouTube.c7dc3a37.chunk.js.map": "/static/js/reactPlayerYouTube.c7dc3a37.chunk.js.map",
     "reactPlayerSoundCloud.755db78f.chunk.js.map": "/static/js/reactPlayerSoundCloud.755db78f.chunk.js.map",
     "reactPlayerVimeo.5f951d68.chunk.js.map": "/static/js/reactPlayerVimeo.5f951d68.chunk.js.map",
@@ -54,7 +54,7 @@
     "reactPlayerPreview.a838358a.chunk.js.map": "/static/js/reactPlayerPreview.a838358a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.45cf6e8e.css",
-    "static/js/main.a0437db5.js"
+    "static/css/main.f2054865.css",
+    "static/js/main.dec6d36f.js"
   ]
 }
