@@ -110,7 +110,7 @@ const registerStaff = async (req, res) => {
     const msg = {
       email: value.email,
       from: process.env.SENDGRID_EMAIL,
-      subject: "Welcome to Eighty8 Alpha Autos Team",
+      subject: "Welcome to Eighty8 Alpha Team",
       text: `Your team account has been created , please login using the following credentials, email:${value.email} password:${value.password}`,
       html: `
       <div>

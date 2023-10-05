@@ -44,10 +44,10 @@ const createInquiryDetails= async(req,res)=>{
             email: user&& user.email? user.email: value.email,
             from: process.env.SENDGRID_EMAIL,
             subject: "Vehicle Inquiry",
-            text: `thank you for visiting Eighty8 Alpha Autos, your inquiry has been submitting succesfully. Our team member will contact you shortly. thank you`,
+            text: `thank you for visiting Eighty8 Alpha, your inquiry has been submitting succesfully. Our team member will contact you shortly. thank you`,
             html: `
             <div>
-              <p>thank you for visiting Eighty8 Alpha Autos, your inquiry has been submitting succesfully. Our team member will contact you shortly. thank you</p>
+              <p>thank you for visiting Eighty8 Alpha, your inquiry has been submitting succesfully. Our team member will contact you shortly. thank you</p>
               </br>
             </div>
             `,
