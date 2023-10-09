@@ -25,7 +25,6 @@ const {
 // Controller function for user signup
 const signup = async (req, res) => {
   try {
-    console.log("inside signup")
     // Validate email, password, and role using Joi
     const { error, value } = signupSchema.validate(req.body);
     if (error) {
@@ -157,13 +156,9 @@ const registerCustomer = async (req, res) => {
     // Check if user already exists in MongoDB
     const user = await Customer.findOne({ email: value.email });
     if (user) {
-      console.log(user)
       return res.status(409).json({ message: "User already exists" });
     } else {
       const newUser = new Customer({ ...value });
-
-      console.log(newUser);
-
       const savedUser = await newUser.save();
       // Send success response
       res.status(201).json({ message: "User created successfully" });
@@ -343,18 +338,7 @@ const resetPassword = async (req, res) => {
     if (!user) {
       return res.status(404).json({ error: "User not found" });
     }
-    console.log(
-      "user.emailToken.code !== value.code",
-      user.emailToken.code !== value.code,
-      user,
-      value.code
-    );
-    // if (user.emailToken.code !== value.code) {
-    //   return res.status(400).json({error:'Invalid OTP code'});
-    // }
-    // if (user.emailToken.expiresAt < Date.now()) {
-    //   return res.status(400).json({error:'OTP code has expired'});
-    // }
+   
     user.password = await bcrypt.hash(value.password, 10);
     user.emailToken.code = null;
     user.emailToken.expiresAt = null;

@@ -7,7 +7,6 @@ const generateAccessTokenSecret = () => {
     return crypto.randomBytes(64).toString('hex');
 };
 
-// console.log(generateAccessTokenSecret())
 
 const generateAccessToken= (user)=>{
     return jwt.sign({userId:user.id}, process.env.ACCESS_TOKEN_SECRET,{expiresIn:'30d'})

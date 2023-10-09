@@ -35,7 +35,6 @@ const updateUserDetails= async(req,res)=>{
        }
       
        const updatedUser= await User.findByIdAndUpdate(id, obj, {new:true})
-       console.log("UPDATED USER=======", updatedUser, req.body)
        res.json({
         message:"user updated successfully",
         data:updatedUser
@@ -92,7 +91,6 @@ const getAllUsers= async(req,res)=>{
             return res.status(200).json([]);
           }
       
-         console.log(filter)
          const page = parseInt(req.query.page) || 1;
          const limit = parseInt(req.query.limit) || 25;
          let skip = (page - 1) * limit;
@@ -165,7 +163,7 @@ const getAllCustomer= async(req,res)=>{
           return res.status(200).json([]);
         }
     
-       console.log(filter)
+     
        const page = parseInt(req.query.page) || 1;
        const limit = parseInt(req.query.limit) || 25;
        let skip = (page - 1) * limit;

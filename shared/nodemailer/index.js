@@ -2,7 +2,6 @@ const nodemailer = require('nodemailer')
 
 const sendEmail  =  async ({ subject, email, text, html, code }) => {
   try {
-    console.log("inside send email")
     const mailOptions = {
       from: process.env.SMPT_USER,
       to: email,
@@ -25,7 +24,6 @@ const sendEmail  =  async ({ subject, email, text, html, code }) => {
   })
 
     await transporter.sendMail(mailOptions);
-    console.log("Email sent");
     return { success: true, message: "Email sent successfully" };
   } catch (error) {
     console.error("Error sending email:", error);

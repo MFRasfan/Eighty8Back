@@ -85,7 +85,6 @@ const getFilteredAndPaginatedRecords = async (req, res) => {
       };
     }
     
-    console.log(111, filters, req.body, filters.priceRange, Array.isArray(filters.priceRange) )
     // mileage survey
     if (filters.mileage && Array.isArray(filters.mileage) && filters.mileage.length === 2) {
         filterQuery = {
@@ -139,7 +138,6 @@ const getFilteredAndPaginatedRecords = async (req, res) => {
  
 
     // Filtering for colors
-    console.log("filters.colors && Array.isArray(filters.colors",filters.colors && Array.isArray(filters.colors))
     if (filters.colors && Array.isArray(filters.colors)) {
       filterQuery["details.color"] = { $in: filters.colors };
     }
@@ -164,7 +162,6 @@ const getFilteredAndPaginatedRecords = async (req, res) => {
       }
 
        // Filtering for drivetrain
-       console.log(filters.drivetrain , filters, Array.isArray(filters.drivetrain))
      if (filters.drivetrain && Array.isArray(filters.drivetrain)) {
         filterQuery["details.drivetrain"] = { $in: filters.drivetrain};
       }
@@ -173,10 +170,6 @@ const getFilteredAndPaginatedRecords = async (req, res) => {
      if (filters.cylinders && Array.isArray(filters.cylinders)) {
         filterQuery["details.engine_cylinders"] = { $in: filters.cylinders};
       }
-  
-
-
-    console.log("filter query=============",filterQuery)
   
     try {
       const totalCount = await vehicles.countDocuments(filterQuery);

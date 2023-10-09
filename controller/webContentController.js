@@ -8,9 +8,7 @@ const Contact = require('../model/contact');
 const createHome = async (req, res) => {
   try {
     
-    console.log("req.body",req.body)
     const findHome= await Home.find({})
-    console.log(findHome)
     if(findHome.length<1){
       const home = new Home(req.body);
   
@@ -18,14 +16,12 @@ const createHome = async (req, res) => {
       return res.status(201).json({ message: 'Home entry created successfully', data: home });
     }else{
       let id = findHome[0]._id
-      console.log("req.body----------",req.body)
       Home.findByIdAndUpdate({_id:id}, req.body, {new:true} )
       .exec((err, doc)=>{
         if(err){
           return res.json({error:"Database Error", reason:err.message})
         }
         if(doc){
-          console.log("doc", doc)
           return res.json({message:"home content updated successfully"})
         }
       })
@@ -52,7 +48,6 @@ const createContact = async (req, res) => {
   try {
     
     const findContact =await Contact.find({})
-    console.log(findContact)
     if(findContact.length<1){
       const contact = new Contact(req.body);
   
@@ -91,7 +86,6 @@ const createAbout = async (req, res) => {
   try {
     
     const findAbout= await About.find({})
-    console.log(findAbout)
     if(findAbout.length<1){
       const about = new About(req.body);
       await about.save();

@@ -18,8 +18,6 @@ const getNotifications= async (req, res) => {
       const filteredNotifications = notifications.map(notification => {
       
         const matchedUserIds = notification.user.filter(user =>{
-            console.log(user.id, mongoose.Types.ObjectId(userId))
-
             return user.id.equals(userId);
         }); 
         

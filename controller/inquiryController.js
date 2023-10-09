@@ -35,7 +35,6 @@ const createInquiryDetails= async(req,res)=>{
                 }
             ]}
         const newRecord= new inquires(data);
-        console.log(newRecord, data)
         await newRecord.save()
 
         if(newRecord._id){
@@ -71,7 +70,6 @@ const createInquiryDetails= async(req,res)=>{
         }
 
     } catch (error) {
-        console.log(error.message)
         res.json({error:"Something went wrong"})
     }
   
@@ -130,8 +128,6 @@ const updateInquiryDetails= async (req,res)=>{
     }
     if(message){
             let temp= Object.assign({},record._doc)
-
-            console.log("================",temp)
             temp.message.push({
                     type:  type || 'customer',
                     message: message,
@@ -142,7 +138,6 @@ const updateInquiryDetails= async (req,res)=>{
 
             inquires.findByIdAndUpdate(id, temp,{new:true})
             .exec((err, doc)=>{
-              console.log("message update", err, doc)
                 if(err){
                     res.json({error:'database error'})
                 }
@@ -191,14 +186,9 @@ const updateInquiryDetails= async (req,res)=>{
         const salesEmail = await User.findById(assignee).select('email')
         const assignedByData = await User.findById({_id: mongoose.Types.ObjectId(assignedBy)}).select('email')
 
-        // let customerDetails={}
-        // if(InquiryDetails.customerId){
-        //    customerDetails = await User.findById(InquiryDetails.customerId).select('email firstName lastName')
-        // }
         const assignedByDetails = await User.findById(assignedBy)
         const assigneeDetails = await User.findById(assignee)
 
-      // console.log({salesEmail, customerDetails, assignedByDetails,assignedByData, assignedBy,assignee})
 
           const msg = {
             email: salesEmail,
@@ -246,7 +236,6 @@ const updateInquiryDetails= async (req,res)=>{
                         message: `An inquiry of our valued customer ${customerDetails.firstName|| InquiryDetails.firstName} ${customerDetails.lastName|| InquiryDetails.lastName} has assigned to ${assigneeDetails.firstName} ${assigneeDetails.lastName}  by our manager ${assignedByDetails.firstName} ${assignedByDetails.lastName}`
                       })
           
-                      console.log("assignee updatd--------------",doc);
                         res.json({message:`The inquiry has updated successfully`, doc})
                     }
                   })
@@ -305,7 +294,6 @@ const updateInquiryDetails= async (req,res)=>{
               })
 
               res.json({message:`The inquiry has updated successfully`})
-                  console.log(doc);
                 }
               })
     }
@@ -367,66 +355,6 @@ const getAllInquiries= async(req,res)=>{
 }
 
 const getInquirySalesReport = async (req, res) => {
-  // try {
-  //   const { from, to, assignee } = req.query;
-    
-  //   let inquiryQuery = {};
-  //   if (from && to) {
-  //     inquiryQuery.createdAt = {
-  //       $gte: new Date(from),
-  //       $lte: new Date(to),
-  //     };
-  //   }
-
-  //   const inquiries = await inquires.find(inquiryQuery).populate({
-  //     path: "assignHistory",
-  //     match: { assignee: assignee ? assignee : { $exists: true } },
-  //   });
-
-  //   const totalInquiries = inquiries.length;
-
-  //   const activeInquiries = inquiries.filter((inquiry) => inquiry.status === "active").length;
-  //   const pendingInquiries = inquiries.filter((inquiry) => inquiry.status === "pending").length;
-  //   const cancelledInquiries = inquiries.filter((inquiry) => inquiry.status === "cancelled").length;
-  //   const completedInquiries = inquiries.filter((inquiry) => inquiry.status === "completed").length;
-  //   const closedInquiries = inquiries.filter((inquiry) => inquiry.status === "closed").length;
-
-  //   let assigneeStatistics = {};
-  //   if (assignee) {
-  //     assigneeStatistics = inquiries.reduce((acc, inquiry) => {
-  //       const history = inquiry.assignHistory.find((h) => h.assignee.toString() === assignee.toString());
-  //       if (history) {
-  //         const key = new Date(history.assignedAt).toISOString().slice(0, 7);
-  //         if (!acc[key]) {
-  //           acc[key] = {
-  //             total: 0,
-  //             active: 0,
-  //             pending: 0,
-  //             cancelled: 0,
-  //             completed: 0,
-  //             closed: 0,
-  //           };
-  //         }
-  //         acc[key].total++;
-  //         acc[key][inquiry.status]++;
-  //       }
-  //       return acc;
-  //     }, {});
-  //   }
-
-  //   return res.status(200).json({
-  //     totalInquiries,
-  //     activeInquiries,
-  //     pendingInquiries,
-  //     cancelledInquiries,
-  //     completedInquiries,
-  //     closedInquiries,
-  //     assigneeStatistics,
-  //   });
-  // } catch (error) {
-  //   console.error(error);
-  //   return res.status(500).json({ message: "Internal server error" });
-  // }
 
   const { from, to, assignee } = req.query;
 

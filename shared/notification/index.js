@@ -31,14 +31,10 @@ const sendNotification=async({sendAdmin=true, sendManager=true, userId=[],messag
           // add read status 
        managerUserIds= managerUsers.map(item=>({id:item, read:false}))
     }
-    
-    // console.log(temp, userId, sendAdmin, sendManager)
-     
-
+  
     // notificationData.roleId=temp
     notificationData.user=[...adminUserIds, ...managerUserIds, ...userIds]
-  
-    console.log(notificationData)
+
 
     await notificationData.save()
 }
