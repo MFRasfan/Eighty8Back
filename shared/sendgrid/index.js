@@ -15,6 +15,7 @@ const sendEmail = async ({subject, email,text, html, code}) => {
       html:  html || `<p>Your OTP code is <strong>${code}</strong>. This code will expire in 1 hour.</p>`,
     };
     await sgMail.send(msg);
+    console.log("email sent,", msg)
     
   } catch (error) {
     console.log(`Error :${error}`)

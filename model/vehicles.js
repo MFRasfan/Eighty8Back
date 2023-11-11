@@ -163,9 +163,9 @@ const vehicleSchema= new mongoose.Schema({
       type:Object,
       default:{}
    },
-   // purchase_history : [{
+   purchase_history : [{
 
-   // }]
+   }]
 })
 
 module.exports= mongoose.model("vehicle",vehicleSchema)
