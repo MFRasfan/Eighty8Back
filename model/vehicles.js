@@ -163,9 +163,31 @@ const vehicleSchema= new mongoose.Schema({
       type:Object,
       default:{}
    },
-   purchase_history : [{
-
-   }]
+   purchases: {
+      type:Object,
+      default:{
+         purchaseItems:[],
+         hstTotal:0,
+         grandTotal:0
+      }
+   },
+   expenses: {
+      type:Object,
+      default:{
+         expenseItems:[],
+         hstTotal:0,
+         grandTotal:0
+      }
+   },
+   sales: {
+      type:Object,
+      default:{
+         salesItems:[],
+         hstTotal:0,
+         costTotal:0,
+         grandTotal:0
+      }
+   },
 })
 
 module.exports= mongoose.model("vehicle",vehicleSchema)

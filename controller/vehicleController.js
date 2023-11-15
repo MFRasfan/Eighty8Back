@@ -53,6 +53,7 @@ const getAllVehicles= async(req,res)=>{
 const createVehicleDetails= async(req,res)=>{
     try {
         const {value,error} =addVechicleSchema.validate(req.body)
+       
         if(error){
             res.status(400).json({error:error.details[0].message})
         }
